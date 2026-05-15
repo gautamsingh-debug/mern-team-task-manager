@@ -60,6 +60,27 @@ app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
+// Debug endpoint to check filesystem on Railway
+app.get("/api/debug", (_req, res) => {
+  try {
+    const clientDistPath = path.join(__dirname, "../client/dist");
+    const exists = fs.existsSync(clientDistPath);
+    const files = exists ? fs.readdirSync(clientDistPath) : [];
+    const assets = exists && fs.existsSync(path.join(clientDistPath, "assets")) 
+      ? fs.readdirSync(path.join(clientDistPath, "assets")) 
+      : [];
+    res.json({ 
+      __dirname, 
+      clientDistPath, 
+      exists, 
+      files,
+      assets
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Serve frontend — always serve if dist folder exists (works on Railway without NODE_ENV)
 const clientDistPath = path.join(__dirname, "../client/dist");
 if (fs.existsSync(clientDistPath)) {
