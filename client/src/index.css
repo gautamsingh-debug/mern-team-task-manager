@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-surface-50 text-surface-900 font-sans antialiased transition-colors duration-300;
+  }
+  
+  .dark body {
+    @apply bg-[#0b0f19] text-surface-50; /* Super dark, slightly blueish slate background for dark mode */
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-2xl transition-all duration-300;
+  }
+  .dark .glass-card {
+    @apply bg-surface-900/50 border-surface-800/60 shadow-[0_8px_30px_rgb(0,0,0,0.2)];
+  }
+
+  .gradient-brand {
+    @apply bg-gradient-to-br from-brand-500 via-brand-600 to-brand-700;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-500 to-brand-300 bg-clip-text text-transparent;
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-xl text-surface-500 hover:text-surface-900 hover:bg-surface-200/50 transition-all duration-200 text-sm font-medium;
+  }
+  .dark .sidebar-link {
+    @apply text-surface-400 hover:text-surface-50 hover:bg-surface-800/50;
+  }
+
+  .sidebar-link.active {
+    @apply text-brand-700 bg-brand-50 shadow-sm relative overflow-hidden;
+  }
+  .dark .sidebar-link.active {
+    @apply text-brand-100 bg-brand-900/30 shadow-none border border-brand-800/50;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm text-white gradient-brand shadow-[0_4px_14px_0_rgba(139,92,246,0.39)] hover:shadow-[0_6px_20px_rgba(139,92,246,0.23)] hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm text-surface-700 bg-surface-100 hover:bg-surface-200 transition-all duration-200 shadow-sm;
+  }
+  .dark .btn-secondary {
+    @apply text-surface-300 bg-surface-800 hover:bg-surface-700 border border-surface-700;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm text-white bg-red-500 hover:bg-red-600 shadow-[0_4px_14px_0_rgba(239,68,68,0.39)] hover:shadow-[0_6px_20px_rgba(239,68,68,0.23)] hover:-translate-y-0.5 transition-all duration-200;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2.5 rounded-xl border border-surface-200 bg-white text-surface-900 placeholder-surface-400 focus:outline-none focus:ring-2 focus:ring-brand-500/40 focus:border-brand-500 transition-all duration-200 text-sm shadow-sm;
+  }
+  .dark .input-field {
+    @apply bg-surface-900 border-surface-700 text-surface-100 placeholder-surface-500 focus:ring-brand-500/40 focus:border-brand-500;
+  }
+
+  .select-field {
+    @apply w-full px-4 py-2.5 rounded-xl border border-surface-200 bg-white text-surface-900 focus:outline-none focus:ring-2 focus:ring-brand-500/40 focus:border-brand-500 transition-all duration-200 text-sm shadow-sm;
+  }
+  .dark .select-field {
+    @apply bg-surface-900 border-surface-700 text-surface-100 focus:ring-brand-500/40 focus:border-brand-500;
+  }
+
+  .label-text {
+    @apply block text-sm font-medium text-surface-700 mb-1.5;
+  }
+  .dark .label-text {
+    @apply text-surface-300;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-surface-300 rounded-full;
+}
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-surface-700;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-surface-400;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  @apply bg-surface-600;
+}
