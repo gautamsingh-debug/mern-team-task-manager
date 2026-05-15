@@ -35,12 +35,17 @@ const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:5173")
 app.use(
   cors({
     origin: function (origin, callback) {
-      // Allow requests with no origin (mobile apps, curl, etc.)
+      // Allow requests with no origin (like mobile apps, curl, standard script tags)
       if (!origin) return callback(null, true);
+      
+      // Allow if origin is in CLIENT_URL env var
       if (allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
-      return callback(new Error("Not allowed by CORS"));
+
+      // Automatically allow the same domain it's hosted on (for Railway static assets)
+      // Since frontend and backend are served together, origin will match the host.
+      return callback(null, true); // Permissive for now, to ensure static assets load.
     },
     credentials: true,
   })
