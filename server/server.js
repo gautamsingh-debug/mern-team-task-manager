@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const path = require("path");
+const fs = require("fs");
 require("dotenv").config();
 
 const connectDB = require("./config/db");
@@ -20,8 +21,13 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
-// Middleware
-app.use(helmet());
+// Middleware — disable CSP so Vite/React inline scripts work
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+    crossOriginEmbedderPolicy: false,
+  })
+);
 const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:5173")
   .split(",")
   .map((s) => s.trim());
@@ -54,11 +60,12 @@ app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
-// Serve frontend in production
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/dist")));
+// Serve frontend — always serve if dist folder exists (works on Railway without NODE_ENV)
+const clientDistPath = path.join(__dirname, "../client/dist");
+if (fs.existsSync(clientDistPath)) {
+  app.use(express.static(clientDistPath));
   app.get("*", (_req, res) => {
-    res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+    res.sendFile(path.join(clientDistPath, "index.html"));
   });
 }
 
