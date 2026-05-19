@@ -1,8 +1,8 @@
-# TaskFlow — Team Task Manager
+# Zenith — Team Task Manager
 
 A full-stack Team Task Manager built with the **MERN stack** (MongoDB, Express, React, Node.js) featuring JWT authentication, role-based access control, project & task management, and a beautiful dashboard.
 
-![TaskFlow](https://img.shields.io/badge/Stack-MERN-blue) ![Auth](https://img.shields.io/badge/Auth-JWT-green) ![CSS](https://img.shields.io/badge/CSS-Tailwind_v3-purple)
+![Zenith](https://img.shields.io/badge/Stack-MERN-blue) ![Auth](https://img.shields.io/badge/Auth-JWT-green) ![CSS](https://img.shields.io/badge/CSS-Tailwind_v3-purple)
 
 ---
 

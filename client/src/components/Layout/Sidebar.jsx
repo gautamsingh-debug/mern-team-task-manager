@@ -62,7 +62,7 @@ export default function Sidebar({ isOpen, onClose }) {
             </div>
             {!isCollapsed && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                <h1 className="text-surface-900 dark:text-white font-bold text-lg leading-tight tracking-tight">TaskFlow</h1>
+                <h1 className="text-surface-900 dark:text-white font-bold text-lg leading-tight tracking-tight">Zenith</h1>
                 <p className="text-surface-500 dark:text-surface-400 text-[10px] font-bold uppercase tracking-widest">Workspace</p>
               </motion.div>
             )}

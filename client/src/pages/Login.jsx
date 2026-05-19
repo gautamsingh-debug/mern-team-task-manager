@@ -51,13 +51,13 @@ export default function Login() {
               <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-2xl">
                 <LuSquareCheck className="w-7 h-7 text-white" />
               </div>
-              <span className="text-3xl font-extrabold tracking-tight">TaskFlow</span>
+              <span className="text-3xl font-extrabold tracking-tight">Zenith</span>
             </div>
             <h1 className="text-5xl xl:text-6xl font-extrabold leading-[1.1] mb-6 tracking-tight">
-              Focus on what <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 to-purple-400">matters most.</span>
+              Elevate your <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 to-purple-400">workflow.</span>
             </h1>
             <p className="text-xl text-surface-300 font-medium max-w-lg leading-relaxed">
-              The premium workspace for teams to collaborate, plan, and execute projects seamlessly.
+              Reach new heights of productivity with the most premium task manager.
             </p>
           </motion.div>
         </div>
@@ -66,30 +66,33 @@ export default function Login() {
       {/* Right Panel - Login Form */}
       <div className="w-full lg:w-[45%] flex items-center justify-center p-6 sm:p-12 relative">
         <motion.div 
-          initial={{ opacity: 0, x: 20 }} 
-          animate={{ opacity: 1, x: 0 }} 
-          transition={{ duration: 0.5, delay: 0.2 }}
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0, x: 20 },
+            visible: { opacity: 1, x: 0, transition: { duration: 0.5, delayChildren: 0.1, staggerChildren: 0.1 } }
+          }}
           className="w-full max-w-md"
         >
           {/* Mobile Logo */}
-          <div className="flex items-center justify-center gap-3 mb-12 lg:hidden">
+          <motion.div variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }} className="flex items-center justify-center gap-3 mb-12 lg:hidden">
             <div className="w-12 h-12 rounded-2xl gradient-brand flex items-center justify-center shadow-lg shadow-brand-500/30">
               <LuSquareCheck className="w-6 h-6 text-white" />
             </div>
-            <span className="text-3xl font-extrabold text-surface-900 dark:text-white tracking-tight">TaskFlow</span>
-          </div>
+            <span className="text-3xl font-extrabold text-surface-900 dark:text-white tracking-tight">Zenith</span>
+          </motion.div>
 
-          <div className="text-center lg:text-left mb-10">
+          <motion.div variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }} className="text-center lg:text-left mb-10">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-surface-900 dark:text-white tracking-tight">
               Welcome back
             </h2>
             <p className="text-surface-500 dark:text-surface-400 mt-3 text-base font-medium">
               Log in to your workspace to continue.
             </p>
-          </div>
+          </motion.div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-1">
+            <motion.div variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }} className="space-y-1">
               <label className="text-sm font-bold text-surface-700 dark:text-surface-300 ml-1">Email</label>
               <input
                 type="email"
@@ -99,8 +102,8 @@ export default function Login() {
                 placeholder="name@company.com"
                 required
               />
-            </div>
-            <div className="space-y-1">
+            </motion.div>
+            <motion.div variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }} className="space-y-1">
               <div className="flex justify-between items-center ml-1">
                 <label className="text-sm font-bold text-surface-700 dark:text-surface-300">Password</label>
                 <a href="#" className="text-brand-600 dark:text-brand-400 text-xs font-bold hover:underline">Forgot password?</a>
@@ -122,24 +125,27 @@ export default function Login() {
                   {showPassword ? <LuEyeOff className="w-5 h-5" /> : <LuEye className="w-5 h-5" />}
                 </button>
               </div>
-            </div>
+            </motion.div>
 
-            <button
+            <motion.button
+              variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               type="submit"
               disabled={loading}
               className="w-full py-3.5 px-4 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-base font-bold shadow-[0_8px_20px_rgba(139,92,246,0.3)] hover:shadow-[0_10px_25px_rgba(139,92,246,0.4)] transition-all flex items-center justify-center gap-2 group disabled:opacity-70"
             >
               {loading ? "Signing in..." : "Continue to Workspace"}
               {!loading && <LuArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />}
-            </button>
+            </motion.button>
           </form>
 
-          <p className="mt-10 text-center text-sm font-medium text-surface-500 dark:text-surface-400">
+          <motion.p variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }} className="mt-10 text-center text-sm font-medium text-surface-500 dark:text-surface-400">
             Don't have an account?{" "}
             <Link to="/signup" className="text-brand-600 dark:text-brand-400 font-bold hover:underline transition-all">
               Sign up
             </Link>
-          </p>
+          </motion.p>
         </motion.div>
       </div>
     </div>

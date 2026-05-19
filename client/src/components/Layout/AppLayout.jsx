@@ -18,7 +18,7 @@ export default function AppLayout() {
 
   const getTitle = () => {
     if (location.pathname.startsWith("/projects/")) return "Project Details";
-    return pageTitles[location.pathname] || "TaskFlow";
+    return pageTitles[location.pathname] || "Zenith";
   };
 
   return (

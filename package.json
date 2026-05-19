@@ -1,5 +1,5 @@
 {
-  "name": "taskflow-mern",
+  "name": "zenith-mern",
   "version": "1.0.0",
   "scripts": {
     "install-all": "npm install --prefix server && npm install --prefix client",
