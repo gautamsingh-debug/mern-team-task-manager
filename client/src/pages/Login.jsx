@@ -139,7 +139,9 @@ export default function Login() {
               {!loading && <LuArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />}
             </motion.button>
           </form>
-
+           <motion.p variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }} className="mt-10 text-center text-sm font-medium text-surface-500 dark:text-surface-400">
+           Admin= gautam@test.com \ Password = test123  
+           </motion.p>
           <motion.p variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }} className="mt-10 text-center text-sm font-medium text-surface-500 dark:text-surface-400">
             Don't have an account?{" "}
             <Link to="/signup" className="text-brand-600 dark:text-brand-400 font-bold hover:underline transition-all">
